@@ -20,8 +20,8 @@ class Website_links_testTest {
             System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
             browser = new ChromeDriver();
             browser.get("https://www.gamblitgaming.com");
-            WebElement gamblit_logo = browser.findElement(By.className("logo"));
-            gamblit_logo.click();
+            WebElement gamblit_logo_image_link = browser.findElement(By.className("logo"));
+            gamblit_logo_image_link.click();
             //Thread.sleep(5000);
             browser.quit();
         }
@@ -31,7 +31,25 @@ class Website_links_testTest {
     }
 
     @Test
-    void about_page_works() {
+    void GLI_link_works() {
+        WebDriver browser;
+
+        try {
+            System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
+            browser = new ChromeDriver();
+            browser.get("https://www.gamblitgaming.com");
+            WebElement GLI_image_link = browser.findElement(By.partialLinkText("gaminglabs"));
+            GLI_image_link.click();
+            Thread.sleep(5000);
+            browser.quit();
+        }
+        catch (Exception e) {
+
+        }
+    }
+
+    @Test
+    void about_link_works() {
         WebDriver browser;
 
         try {
@@ -49,15 +67,15 @@ class Website_links_testTest {
     }
 
     @Test
-    void developers_page_works() {
+    void developers_link_works() {
         WebDriver browser;
 
         try {
             System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
             browser = new ChromeDriver();
             browser.get("https://www.gamblitgaming.com/");
-            WebElement about_link = browser.findElement(By.linkText("DEVELOPERS"));
-            about_link.click();
+            WebElement developers_link = browser.findElement(By.linkText("DEVELOPERS"));
+            developers_link.click();
             //Thread.sleep(5000);
             browser.quit();
         }
@@ -67,15 +85,15 @@ class Website_links_testTest {
     }
 
     @Test
-    void operators_page_works() {
+    void operators_link_works() {
         WebDriver browser;
 
         try {
             System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
             browser = new ChromeDriver();
             browser.get("https://www.gamblitgaming.com/");
-            WebElement about_link = browser.findElement(By.linkText("OPERATORS"));
-            about_link.click();
+            WebElement operators_link = browser.findElement(By.linkText("OPERATORS"));
+            operators_link.click();
             //Thread.sleep(5000);
             browser.quit();
         }
@@ -85,15 +103,15 @@ class Website_links_testTest {
     }
 
     @Test
-    void games_page_works() {
+    void games_link_works() {
         WebDriver browser;
 
         try {
             System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
             browser = new ChromeDriver();
             browser.get("https://www.gamblitgaming.com/");
-            WebElement about_link = browser.findElement(By.linkText("GAMES"));
-            about_link.click();
+            WebElement games_link = browser.findElement(By.linkText("GAMES"));
+            games_link.click();
             //Thread.sleep(5000);
             browser.quit();
         }
@@ -103,15 +121,15 @@ class Website_links_testTest {
     }
 
     @Test
-    void news_page_works() {
+    void news_link_works() {
         WebDriver browser;
 
         try {
             System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
             browser = new ChromeDriver();
             browser.get("https://www.gamblitgaming.com/");
-            WebElement about_link = browser.findElement(By.linkText("NEWS"));
-            about_link.click();
+            WebElement news_link = browser.findElement(By.linkText("NEWS"));
+            news_link.click();
             //Thread.sleep(5000);
             browser.quit();
         }
@@ -121,15 +139,15 @@ class Website_links_testTest {
     }
 
     @Test
-    void contact_page_works() {
+    void contact_link_works() {
         WebDriver browser;
 
         try {
             System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
             browser = new ChromeDriver();
             browser.get("https://www.gamblitgaming.com/");
-            WebElement about_link = browser.findElement(By.linkText("CONTACT"));
-            about_link.click();
+            WebElement contact_link = browser.findElement(By.linkText("CONTACT"));
+            contact_link.click();
             //Thread.sleep(5000);
             browser.quit();
         }
@@ -164,8 +182,8 @@ class Website_links_testTest {
             System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
             browser = new ChromeDriver();
             browser.get("https://www.gamblitgaming.com");
-            WebElement responsible_gaming_link = browser.findElement(By.partialLinkText("Careers"));
-            responsible_gaming_link.click();
+            WebElement careers_link = browser.findElement(By.partialLinkText("Careers"));
+            careers_link.click();
             //Thread.sleep(5000);
             browser.quit();
         }
@@ -175,15 +193,15 @@ class Website_links_testTest {
     }
 
     @Test
-    void facebook_page_works() {
+    void facebook_link_works() {
         WebDriver browser;
 
         try {
             System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
             browser = new ChromeDriver();
             browser.get("https://www.gamblitgaming.com");
-            WebElement facebook = browser.findElement(By.partialLinkText("Facebook"));
-            facebook.click();
+            WebElement facebook_image_link = browser.findElement(By.partialLinkText("Facebook"));
+            facebook_image_link.click();
             //Thread.sleep(5000);
             browser.quit();
         }
@@ -193,15 +211,15 @@ class Website_links_testTest {
     }
 
     @Test
-    void twitter_page_works() {
+    void twitter_link_works() {
         WebDriver browser;
 
         try {
             System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
             browser = new ChromeDriver();
             browser.get("https://www.gamblitgaming.com");
-            WebElement twitter = browser.findElement(By.partialLinkText("Twitter"));
-            twitter.click();
+            WebElement twitter_image_link = browser.findElement(By.partialLinkText("Twitter"));
+            twitter_image_link.click();
             //Thread.sleep(5000);
             browser.quit();
         }
@@ -211,7 +229,7 @@ class Website_links_testTest {
     }
 
     @Test
-    void another_page_works() {
+    void another_link_works() {
         WebDriver browser;
 
         try {
@@ -230,7 +248,7 @@ class Website_links_testTest {
 
     // does not work
     /*@Test
-    void about_team_page_works() {
+    void about_team_link_works() {
         WebDriver browser;
 
         System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
@@ -244,7 +262,7 @@ class Website_links_testTest {
     }
 
     @Test
-    void about_careers_page_works() {
+    void about_careers_link_works() {
         WebDriver browser;
 
         System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
@@ -256,7 +274,7 @@ class Website_links_testTest {
     }
 
     @Test
-    void about_where_to_play_page_works() {
+    void about_where_to_play_link_works() {
         WebDriver browser;
 
         System.setProperty("webdriver.chrome.driver", "/Users/andy/chromedriver.exe");
