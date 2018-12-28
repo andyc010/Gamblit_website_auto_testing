@@ -17,6 +17,7 @@ class Website_links_testTest {
 
     WebDriver browser;
     static final String driverKey = "webdriver.chrome.driver";
+    // changed the following to put the actual string in a separate file & class due to git
     static final String driverValue = SeleniumSettings.CHROME_DRIVER_PATH;
     static final String homePage = "https://www.gamblitgaming.com";
 

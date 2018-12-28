@@ -16,6 +16,7 @@ import java.text.*;
 public class news_dropdowns_test {
     WebDriver browser;
     static final String chromeDriverKey = "webdriver.chrome.driver";
+    // changed the following to put the actual string in a separate file & class due to git
     static final String chromeDriverValue = SeleniumSettings.CHROME_DRIVER_PATH;
     static final String homePage = "https://www.gamblitgaming.com/blog/";
 
