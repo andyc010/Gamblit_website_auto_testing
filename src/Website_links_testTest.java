@@ -43,8 +43,9 @@ class Website_links_testTest {
     // GLI page opens in a new tab, affecting the results... already an unusual test...
     @Test
     void GLI_link_works() {
+        // TODO: Find an alternative method to using Thread.sleep()
         // this works when using a workaround of using Thread.sleep(), but doesn't work when going without it
-
+        // reference: https://github.com/SeleniumHQ/selenium/issues/4075#issuecomment-307761056
         try {
             //
             browser.manage().window().maximize();
