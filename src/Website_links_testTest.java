@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -44,6 +46,26 @@ class Website_links_testTest {
     @Test
     void GLI_link_works() {
         // TODO: Find an alternative method to using Thread.sleep()
+
+        browser.manage().window().maximize();
+        browser.get(homePage);
+        WebElement GLI_image_link = browser.findElement(By.xpath("//img[@ src='/assets/images/glc-badge.jpg']"));
+        GLI_image_link.click();
+
+        // the following code uses code from first answer from:
+        //      https://stackoverflow.com/questions/51665131/how-to-move-seleniums-focus-to-the-new-tab-window
+
+        String mainTab = browser.getWindowHandle();
+        Set<String> allTabs = browser.getWindowHandles();
+
+        for (String childTab : allTabs) {
+            if(!childTab.equals(mainTab)) {
+                browser.switchTo().window(childTab);
+                Assertions.assertEquals("https://access.gaminglabs.com/certificate/index?i=161", browser.getCurrentUrl(), "URLs for Gamblit Gaming's GLI page do not match!");
+            }
+        }
+
+        /*
         // this works when using a workaround of using Thread.sleep(), but doesn't work when going without it
         // reference: https://github.com/SeleniumHQ/selenium/issues/4075#issuecomment-307761056
         try {
@@ -60,7 +82,7 @@ class Website_links_testTest {
         } catch (Exception e) {
 
         }
-
+        */
     }
 
     @Test
@@ -146,29 +168,59 @@ class Website_links_testTest {
         Assertions.assertEquals("https://gamblitgaming.com/about/careers/", browser.getCurrentUrl(), "URLs for Career page");
     }
 
-    // Facebook opens in a new tab, affecting the results...
+    // Facebook opens in a new tab, and the Gamblit Gaming Facebook page does not load...
     @Disabled
     void facebook_link_works() {
         browser.manage().window().maximize();
         browser.get(homePage);
         WebElement facebook_image_link = browser.findElement(By.partialLinkText("Facebook"));
         facebook_image_link.click();
+        browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        // the following code uses code from first answer to:
+        //      https://stackoverflow.com/questions/51665131/how-to-move-seleniums-focus-to-the-new-tab-window
+
+        String mainTab = browser.getWindowHandle();
+        Set<String> allTabs = browser.getWindowHandles();
+
+        for(String childTab : allTabs) {
+            if(!childTab.equals(mainTab)) {
+                browser.switchTo().window(childTab);
+                Assertions.assertEquals("https://www.facebook.com/gamblitgaming", browser.getCurrentUrl(), "URLs for Gamblit Gaming's Facebook page do not match!");
+            }
+        }
         //browser.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         //browser.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "\t");
-        browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //Assertions.assertEquals("facebook.com/gamblitgaming", browser.getCurrentUrl(), "URLs for Facebook do not match!");
     }
 
     // Twitter opens in a new tab, affecting the results...
-    @Disabled
+    @Test
     void twitter_link_works() {
+
+        Actions actions = new Actions(browser);
         browser.manage().window().maximize();
         browser.get(homePage);
         WebElement twitter_image_link = browser.findElement(By.partialLinkText("Twitter"));
         twitter_image_link.click();
         browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        browser.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "\t");
-        Assertions.assertEquals("twitter.com/gamblitgaming", browser.getCurrentUrl(), "URLs for Twitter do not match!");
+
+        // the following code uses code from first answer to:
+        //      https://stackoverflow.com/questions/51665131/how-to-move-seleniums-focus-to-the-new-tab-window
+
+        String mainTab = browser.getWindowHandle();
+        Set<String> allTabs = browser.getWindowHandles();
+
+        for(String childTab : allTabs) {
+            if(!childTab.equals(mainTab)) {
+                browser.switchTo().window(childTab);
+                Assertions.assertEquals("https://twitter.com/gamblitgaming", browser.getCurrentUrl(), "URLs for Gamblit Gaming's Twitter page do not match!");
+            }
+        }
+        //browser.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "\t");
+
+        //Assertions.assertEquals("twitter.com/gamblitgaming", browser.getCurrentUrl(), "URLs for Twitter do not match!");
     }
 
     @Disabled
